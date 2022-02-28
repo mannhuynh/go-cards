@@ -1,1 +1,1 @@
-# go-cards
+# Cards Game using Golang
