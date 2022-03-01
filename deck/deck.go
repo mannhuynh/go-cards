@@ -1,6 +1,10 @@
 package deck
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 type deck []string
 
@@ -27,4 +31,14 @@ func (d deck) PrintDeck() {
 
 func Deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+// DecktoString return a string by converting deck value to slice of string and joining to a string
+func (d deck) DecktoString() string {
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) SavetoFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0666)
+
 }
