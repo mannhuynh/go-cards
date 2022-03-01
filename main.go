@@ -5,13 +5,16 @@ import (
 )
 
 func main() {
+
 	cards := deck.NewDeck()
 
-	cards.SavetoFile("mycards.txt")
-
 	// hand, remainDeck := deck.Deal(cards, 5)
-	// fmt.Println(hand.DecktoString())
-	// fmt.Println("-----")
+	// fmt.Println(hand.DecktoString()
 	// remainDeck.PrintDeck()
+
+	// cards.SavetoFile("mycards.txt")
+
+	// cardsFromFile := deck.NewDeckFromFile("mycards")
+	// cardsFromFile.PrintDeck()
 
 }

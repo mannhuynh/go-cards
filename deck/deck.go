@@ -3,6 +3,7 @@ package deck
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -39,6 +40,16 @@ func (d deck) DecktoString() string {
 }
 
 func (d deck) SavetoFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0666)
+	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0666) // 0666 is a permition number
 
+}
+
+// NewDeckFromFile convert a file of string to a string slice with comma separation
+func NewDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	return deck(strings.Split(string(bs), ","))
 }
