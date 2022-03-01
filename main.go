@@ -12,9 +12,12 @@ func main() {
 	// fmt.Println(hand.DecktoString()
 	// remainDeck.PrintDeck()
 
-	// cards.SavetoFile("mycards.txt")
+	cards.SavetoFile("mycards")
 
-	// cardsFromFile := deck.NewDeckFromFile("mycards")
+	cardsFromFile := deck.NewDeckFromFile("mycards")
 	// cardsFromFile.PrintDeck()
+
+	cardsFromFile.Shuffle()
+	cardsFromFile.PrintDeck()
 
 }

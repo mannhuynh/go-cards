@@ -3,12 +3,15 @@ package deck
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 type deck []string
 
+// NewDeck function create a new deck of cards
 func NewDeck() deck {
 	cards := deck{}
 
@@ -52,4 +55,16 @@ func NewDeckFromFile(filename string) deck {
 		os.Exit(1)
 	}
 	return deck(strings.Split(string(bs), ","))
+}
+
+// Shuffle will shuffle a deck of card
+func (d deck) Shuffle() {
+	// Seeding the random number
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
