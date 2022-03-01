@@ -1,10 +1,16 @@
 package main
 
-import "myapp/deck"
+import (
+	"fmt"
+	"myapp/deck"
+)
 
 func main() {
 	cards := deck.NewDeck()
 
-	cards.Print()
+	hand, remainDeck := deck.Deal(cards, 5)
+	hand.PrintDeck()
+	fmt.Println("-----")
+	remainDeck.PrintDeck()
 
 }
