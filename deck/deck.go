@@ -27,12 +27,14 @@ func NewDeck() deck {
 	return cards
 }
 
+// PrintDeck will print out the cards of a deck
 func (d deck) PrintDeck() {
 	for _, card := range d {
 		fmt.Println(card)
 	}
 }
 
+// Deal will split a deck into two decks
 func Deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
@@ -42,6 +44,7 @@ func (d deck) DecktoString() string {
 	return strings.Join([]string(d), ",")
 }
 
+// SavetoFile will save a deck to a file of string
 func (d deck) SavetoFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0666) // 0666 is a permition number
 
