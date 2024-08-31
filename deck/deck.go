@@ -46,7 +46,8 @@ func (d deck) DecktoString() string {
 
 // SavetoFile will save a deck to a file of string
 func (d deck) SavetoFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0666) // 0666 is a permition number
+	// Using the correct permission number, 0644, which is more secure than 0666.
+	return ioutil.WriteFile(filename, []byte(d.DecktoString()), 0644)
 
 }
 
